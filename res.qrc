@@ -1,5 +1,13 @@
 <RCC>
-    <qresource prefix="/ressources/icons">
-        <file>ressources/icons/123.svg</file>
+    <qresource prefix="/">
+        <file>ressources/icons/house.svg</file>
+        <file>ressources/icons/box-seam.svg</file>
+        <file>ressources/icons/gear.svg</file>
+        <file>ressources/icons/caret-right.svg</file>
+        <file>ressources/icons/box-arrow-down.svg</file>
+        <file>ressources/icons/box-arrow-up.svg</file>
+        <file>ressources/icons/truck.svg</file>
+        <file>ressources/icons/trash.svg</file>
+        <file>ressources/icons/recycle.svg</file>
     </qresource>
 </RCC>
