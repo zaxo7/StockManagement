@@ -76,7 +76,7 @@ bool Database::addProduct(QString name, float price, QString desc, QString brand
     if(logo)
         query.bindValue(":logo", *logo);
     else
-        query.bindValue(":logo", NULL);
+        query.bindValue(":logo", QByteArray());
 
     if(query.exec())
     {
@@ -112,7 +112,7 @@ bool Database::updateProduct(QString name, float price, QString desc, QString br
     if(logo)
         query.bindValue(":logo", *logo);
     else
-        query.bindValue(":logo", NULL);
+        query.bindValue(":logo", QByteArray());
 
     if(query.exec())
     {

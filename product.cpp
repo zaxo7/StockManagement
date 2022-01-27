@@ -109,7 +109,7 @@ void Product::setId(int newId)
     id = newId;
 }
 
-const QString &Product::getName() const
+QString &Product::getName()
 {
     return name;
 }

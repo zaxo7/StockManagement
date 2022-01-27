@@ -51,6 +51,8 @@ private slots:
 
     void on_invReproduction_clicked();
 
+    void on_buttonEmptyDatabase_clicked();
+
 private:
     Ui::MainWindow *ui;
 

@@ -27,6 +27,10 @@ public:
     void reloadList(bool reset = true);
 
     bool loadImageToUI(QByteArray img);
+
+    void clearFields();
+
+    void enableEditingFourm(bool state = true);
 private slots:
     void on_lineEditSearch_textEdited(const QString &arg1);
 

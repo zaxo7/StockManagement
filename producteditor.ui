@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>551</width>
-    <height>555</height>
+    <width>561</width>
+    <height>582</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -36,7 +36,7 @@
     </layout>
    </item>
    <item row="0" column="2">
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="groupBox_caracterestics">
      <property name="title">
       <string>Caractéristiques</string>
      </property>
@@ -208,6 +208,7 @@
         <property name="font">
          <font>
           <pointsize>10</pointsize>
+          <weight>50</weight>
           <bold>false</bold>
           <stylestrategy>PreferAntialias</stylestrategy>
          </font>

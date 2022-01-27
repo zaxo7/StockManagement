@@ -29,7 +29,7 @@ public:
     int getId() const;
     void setId(int newId);
 
-    const QString &getName() const;
+    QString &getName();
     void setName(const QString &newName);
 
     float getPrice() const;

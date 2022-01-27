@@ -76,4 +76,3 @@ void MainWindow::on_stackedPages_currentChanged(int arg1)
 }
 
 
-

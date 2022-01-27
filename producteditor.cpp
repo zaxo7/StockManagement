@@ -101,8 +101,14 @@ void ProductEditor::reloadList(bool reset)
     for(int i = 0; i < products.count(); i++)
     {
         Product *p = products.at(i);
+
+        if(currentProduct /*&& (currentProduct->getId() != -1)*/ && (currentProduct == p))
+        {
+            selectedRow = i;
+        }
+
         QStandardItem *item = new QStandardItem;
-        item->setText(p->getName() + "\t" + p->getBrand() + "\t" + p->getBarcode());
+        item->setText((p->getName().isEmpty() ? "sans nom":p->getName()) + "\t" + p->getBrand() + "\t" + p->getBarcode());
         item->setData((int)p->getId(), Qt::UserRole);
 
         //qDebug() << "id = " << p->getId();
@@ -128,6 +134,9 @@ void ProductEditor::reloadList(bool reset)
     ui->listViewProducts->clicked(ind->index(selectedRow, 0));
     ui->listViewProducts->setCurrentIndex(ind->index(selectedRow, 0));
     ui->listViewProducts->blockSignals(false);
+
+
+    enableEditingFourm(products.count() != 0);
 }
 
 bool ProductEditor::loadImageToUI(QByteArray pic)
@@ -154,6 +163,33 @@ bool ProductEditor::loadImageToUI(QByteArray pic)
     return true;
 }
 
+void ProductEditor::clearFields()
+{
+    QObjectList objects = ui->groupBox_caracterestics->children();
+
+    foreach(QObject *obj, objects)
+    {
+        QString className = obj->metaObject()->className();
+
+        if(className == "QLineEdit")
+        {
+            ((QLineEdit*)obj)->clear();
+        }
+        else if(className == "QTextEdit")
+        {
+            ((QTextEdit*)obj)->clear();
+        }
+    }
+    ui->textEditDescription->clear();
+
+    loadImageToUI(QByteArray());
+}
+
+void ProductEditor::enableEditingFourm(bool state)
+{
+    ui->groupBox_caracterestics->setEnabled(state);
+}
+
 void ProductEditor::on_lineEditSearch_textEdited(const QString &arg1)
 {
     reloadList();
@@ -165,6 +201,19 @@ void ProductEditor::on_pushButtonAddProduct_clicked()
     Product *p = new Product;
     p->setName("produit");
     products.push_back(p);
+
+    clearFields();
+
+    currentProduct = p;
+    selectedRow = products.count() - 1;
+
+    QAbstractItemModel *ind = ui->listViewProducts->model();
+
+    ui->listViewProducts->blockSignals(true);
+    on_listViewProducts_clicked(ind->index(selectedRow, 0));
+    ui->listViewProducts->setCurrentIndex(ind->index(selectedRow, 0));
+    ui->listViewProducts->blockSignals(false);
+
     reloadList(false);
 }
 
