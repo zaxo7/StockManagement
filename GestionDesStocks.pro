@@ -13,6 +13,7 @@ SOURCES += \
     databasetable.cpp \
     history.cpp \
     homePage.cpp \
+    homePage.cpp \
     inventory.cpp \
     inventoryPage.cpp \
     inventoryselector.cpp \
